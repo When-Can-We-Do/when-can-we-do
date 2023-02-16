@@ -57,10 +57,10 @@ export default function AddTask() {
               </Stack>
               <Grid.Col span={7}>
                 <Group mt="md" position="apart">
-                  <Link href="/">
+                  <Link href="/calendar">
                     <Button color="red">Cancel</Button>
                   </Link>
-                  <Link href="/">
+                  <Link href="/calendar">
                     <Button
                       type="submit"
                       variant="gradient"
