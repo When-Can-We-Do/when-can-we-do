@@ -19,29 +19,30 @@ export default function Calendar() {
       <main className={styles.main}>
         <div className="grid grid-cols-12 w-full align-text-middle align-middle">
           <div className="col-span-2 text-center">
-            <Button
-              variant="gradient"
-              gradient={{ from: "#045DE9", to: "#09C6F9", deg: 35 }}
-              className="color"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6 align-middle"
+            <Link href="/addTask">
+              <Button
+                variant="gradient"
+                gradient={{ from: "#045DE9", to: "#09C6F9", deg: 35 }}
+                className="color"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 4.5v15m7.5-7.5h-15"
-                />
-              </svg>
-              <Link href="/addTask">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6 align-middle"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 4.5v15m7.5-7.5h-15"
+                  />
+                </svg>
+
                 <p className="text-xl align-middle pl-1">Add Task</p>
-              </Link>
-            </Button>
+              </Button>
+            </Link>
           </div>
           <div className="col-span-2"></div>
           <div className="col-span-1 ">
@@ -89,7 +90,9 @@ export default function Calendar() {
               src="Asset 1.png"
               className="w-[35px] align-middle mr-[10px]"
             ></img>
-            <Button color={"red"}>Sign out</Button>
+            <Link href="/">
+              <Button color={"red"}>Sign out</Button>
+            </Link>
           </div>
           <div className="border-b border-black w-full col-span-12 p-5">
             <hr></hr>
