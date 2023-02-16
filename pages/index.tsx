@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "@/styles/Home.module.css";
+import { Button } from "@mantine/core";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,10 +16,27 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <div className="grid grid-cols-12 w-full">
-          <div className="col-span-4 text-left">
-            <p className="text-2xl text-left">When Can We Do?</p>
+        <div className="grid grid-cols-12 w-full align-text-middle align-middle">
+          <div className="col-span-2 text-center">
+            <Button color="gray">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6 align-middle"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 4.5v15m7.5-7.5h-15"
+                />
+              </svg>
+              <p className="text-xl align-middle pl-1">Add Task</p>
+            </Button>
           </div>
+          <div className="col-span-2"></div>
           <div className="col-span-1 ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +53,9 @@ export default function Home() {
               />
             </svg>
           </div>
-          <div className="col-span-2 text-3xl text-center "> March</div>
+          <div className="col-span-2 text-3xl text-center align-text-middle">
+            March
+          </div>
           <div className="col-span-1">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -52,8 +72,27 @@ export default function Home() {
               />
             </svg>
           </div>
-          <div className="col-span-4"></div>
-          <div className="border-b border-gray-400 w-full col-span-12 h-6"></div>
+          <div className="col-span-2">
+            <p className="text-2xl text-center align-text-middle">
+              When Can We Do?
+            </p>
+          </div>
+          <div className="col-span-2 text-center">
+            <img
+              src="Asset 1.png"
+              className="w-[35px] align-middle mr-[10px]"
+            ></img>
+            <Button color={"gray"}>Sign out</Button>
+          </div>
+          <div className="border-b border-black w-full col-span-12 p-5">
+            <hr></hr>
+          </div>
+          <div className=" col-span-12 content-center items-stretch">
+            <img
+              src="Asset-2.png"
+              className="h-[800px] block align-middle m-auto"
+            ></img>
+          </div>
         </div>
       </main>
     </>
