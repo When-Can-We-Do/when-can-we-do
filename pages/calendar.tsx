@@ -100,7 +100,7 @@ export default function Calendar() {
           <div className=" col-span-12 content-center items-stretch">
             <img
               src="Asset-2.png"
-              className="h-[800px] block align-middle m-auto"
+              className="h-[775px] block align-middle m-auto"
             ></img>
           </div>
         </div>
