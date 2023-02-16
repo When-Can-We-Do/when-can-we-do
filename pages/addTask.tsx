@@ -13,6 +13,7 @@ import {
 } from "@mantine/core";
 import { DatePicker } from "@mantine/dates";
 import { Inter } from "@next/font/google";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +26,7 @@ export default function AddTask() {
           p="lg"
           radius="md"
           withBorder
-          className="w-96 min-h-96"
+          className="w-96 min-h-96 pt-[14px]"
         >
           <Grid columns={7} gutter={0}>
             <Grid.Col span={7} className="text-3xl">
@@ -45,21 +46,25 @@ export default function AddTask() {
               <DatePicker
                 allowFreeInput
                 placeholder="Pick date"
-                label="Event date"
+                label="Task Date"
                 withAsterisk
               />
             </Stack>
             <Grid.Col span={7}>
               <Group mt="md" position="apart">
-                <Button color="red">Cancel</Button>
-                <Button
-                  type="submit"
-                  variant="gradient"
-                  gradient={{ from: "#045DE9", to: "#09C6F9", deg: 35 }}
-                  className="color"
-                >
-                  Save
-                </Button>
+                <Link href="/">
+                  <Button color="red">Cancel</Button>
+                </Link>
+                <Link href="/">
+                  <Button
+                    type="submit"
+                    variant="gradient"
+                    gradient={{ from: "#045DE9", to: "#09C6F9", deg: 35 }}
+                    className="color"
+                  >
+                    Save
+                  </Button>
+                </Link>
               </Group>
             </Grid.Col>
           </Grid>
