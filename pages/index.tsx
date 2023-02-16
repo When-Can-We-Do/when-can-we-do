@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "@/styles/Home.module.css";
 import { Button } from "@mantine/core";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,7 +34,9 @@ export default function Home() {
                   d="M12 4.5v15m7.5-7.5h-15"
                 />
               </svg>
-              <p className="text-xl align-middle pl-1">Add Task</p>
+              <Link href="/addTask">
+                <p className="text-xl align-middle pl-1">Add Task</p>
+              </Link>
             </Button>
           </div>
           <div className="col-span-2"></div>
