@@ -1,8 +1,5 @@
 import {
   Card,
-  Image,
-  Text,
-  Badge,
   Button,
   Group,
   Box,
@@ -14,8 +11,29 @@ import {
 import { DatePicker } from "@mantine/dates";
 import Head from "next/head";
 import Link from "next/link";
+import { useState } from "react";
+import { tasks } from "./tasks.js";
 
 export default function AddTask() {
+
+  const [task, setTask] = useState("Read 100 pages")
+  const [date, setDate] = useState("Sunday, April 2nd")
+
+  const saveTask = () => { 
+    console.log(tasks)
+    const matchingDate = tasks.dates.find((d) => d.date === date);
+    if (matchingDate) {
+      matchingDate.tasks.push(task)
+    } else {
+      tasks.dates.push({
+        date: date,
+        tasks: [task]
+      });
+    }
+    console.log(tasks)
+  }
+
+
   return (
     <>
       <Head>
@@ -66,6 +84,7 @@ export default function AddTask() {
                       variant="gradient"
                       gradient={{ from: "#045DE9", to: "#09C6F9", deg: 35 }}
                       className="color"
+                      onClick={saveTask}
                     >
                       Save
                     </Button>

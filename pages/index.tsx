@@ -1,19 +1,11 @@
 import Head from "next/head";
 import { Inter } from "@next/font/google";
-import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import {
   Card,
-  Image,
-  Text,
-  Badge,
   Button,
-  Group,
   Box,
   Grid,
-  Stack,
-  TextInput,
-  Textarea,
   Center,
 } from "@mantine/core";
 import { DatePicker } from "@mantine/dates";
@@ -48,14 +40,24 @@ export default function Home() {
               <Grid.Col span={7} className="mb-10">
                 <Link href="/calendar">
                   <Center>
-                    <Button
+                    {/* <Button
                       type="submit"
                       variant="gradient"
                       gradient={{ from: "#045DE9", to: "#09C6F9", deg: 35 }}
                       className="color align-center text-lg"
                     >
                       Sign In
-                    </Button>
+                    </Button> */}
+                    <Link href="/calendar">
+                      <Button>
+                        Calendar View
+                      </Button>
+                    </Link>
+                    <Link href="/list">
+                      <Button>
+                        List View
+                      </Button>
+                    </Link>
                   </Center>
                 </Link>
               </Grid.Col>
