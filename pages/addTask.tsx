@@ -11,27 +11,38 @@ import {
 import { DatePicker } from "@mantine/dates";
 import Head from "next/head";
 import Link from "next/link";
-import { useState } from "react";
-import { tasks } from "./tasks.js";
+import { useContext, useEffect, useState } from "react";
+import { TaskContext } from './taskContext';
 
-export default function AddTask() {
+export default function AddTask(props: any) {
 
-  const [task, setTask] = useState("Read 100 pages")
-  const [date, setDate] = useState("Sunday, April 2nd")
+  const { addTask, tasks } = useContext(TaskContext);
+  const [title, setTitle] = useState("")
+  const [date, setDate] = useState<Date | null>(null)
+  
+  const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(event.target.value);
+  };
+
+  const handleDateChange = (newDate: Date | null) => {
+    setDate(newDate);
+  };
 
   const saveTask = () => { 
-    console.log(tasks)
-    const matchingDate = tasks.dates.find((d) => d.date === date);
-    if (matchingDate) {
-      matchingDate.tasks.push(task)
-    } else {
-      tasks.dates.push({
-        date: date,
-        tasks: [task]
-      });
-    }
-    console.log(tasks)
+    const task = {
+      title: title,
+      date: date,
+      completed: false
+    };
+
+    addTask(task)
+    // console.log(tasks)
+    props.setShowAddTask(false)
   }
+
+  useEffect(() => {
+    console.log(tasks);
+  }, [tasks]);
 
 
   return (
@@ -59,6 +70,8 @@ export default function AddTask() {
                 <TextInput
                   label="Task Name"
                   placeholder='e.g. "Do homework"'
+                  value={title}
+                  onChange={handleTitleChange}
                   required
                 />
                 <Textarea
@@ -70,6 +83,7 @@ export default function AddTask() {
                   allowFreeInput
                   placeholder="Pick date"
                   label="Task Date"
+                  onChange={handleDateChange}
                   withAsterisk
                 />
               </Stack>
@@ -78,17 +92,15 @@ export default function AddTask() {
                   <Link href="/calendar">
                     <Button color="red">Cancel</Button>
                   </Link>
-                  <Link href="/calendar">
-                    <Button
-                      type="submit"
-                      variant="gradient"
-                      gradient={{ from: "#045DE9", to: "#09C6F9", deg: 35 }}
-                      className="color"
-                      onClick={saveTask}
-                    >
-                      Save
-                    </Button>
-                  </Link>
+                  <Button
+                    type="submit"
+                    variant="gradient"
+                    gradient={{ from: "#045DE9", to: "#09C6F9", deg: 35 }}
+                    className="color"
+                    onClick={saveTask}
+                  >
+                    Save
+                  </Button>
                 </Group>
               </Grid.Col>
             </Grid>
