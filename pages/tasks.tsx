@@ -307,7 +307,7 @@ export default function Tasks() {
               eventContent={renderEventContent}
             />
           </div>
-          // below is the image example code for the initial design idea
+          {/* // below is the image example code for the initial design idea */}
           {/* <div className=" col-span-12 content-center items-stretch">
             <img
               src="Asset-2.png"
