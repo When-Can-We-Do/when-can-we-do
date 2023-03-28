@@ -3,7 +3,7 @@ import React from "react";
 import FullCalendar from "@fullcalendar/react"; // must go before plugins
 import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
 
-export default function Calendar() {
+export default function Calendar(props: any) {
   return (
     <>
       <main className={styles.main}>
@@ -12,10 +12,12 @@ export default function Calendar() {
             plugins={[dayGridPlugin]}
             initialView="dayGridMonth"
             height={"750px"}
-            events={[
-              { title: "This is a task you have to do", date: "2023-03-01" },
-              { title: "This task as well", date: "2023-03-02" },
-            ]}
+            events={props.tasks.map((task: any, index: number) => {
+              return {
+                title: task.title,
+                date: task.date?.toISOString().split("T")[0],
+              };
+            })}
           />
         </div>
         // below is the image example code for the initial design idea
