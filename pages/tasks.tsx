@@ -28,7 +28,7 @@ export default function Tasks() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [title, setTitle] = useState("");
   const [date, setDate] = useState<Date | null>(null);
-  const [view, setView] = useState("Calender");
+  const [view, setView] = useState("Calendar");
   const [showAddTask, setShowAddTask] = useState(false);
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,10 +54,10 @@ export default function Tasks() {
   };
 
   const changeView = () => {
-    if (view === "Calender") {
+    if (view === "Calendar") {
       setView("List");
     } else {
-      setView("Calender");
+      setView("Calendar");
     }
   };
 
@@ -176,7 +176,7 @@ export default function Tasks() {
               </Card>
             </Box>
           </Box>
-        ) : view === "Calender" ? (
+        ) : view === "Calendar" ? (
           <Calendar />
         ) : (
           <div className="listBox h-full w-full">
