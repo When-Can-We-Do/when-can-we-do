@@ -7,7 +7,7 @@ import {
   Group,
   Stack,
   Textarea,
-  TextInput, Accordion, CloseButton,
+  TextInput, Accordion, CloseButton, Checkbox
 } from "@mantine/core";
 import Head from "next/head";
 import Link from "next/link";
@@ -36,6 +36,7 @@ export default function Tasks() {
   const [description, setDescription] = useState("");
   const [view, setView] = useState("Calendar");
   const [showAddTask, setShowAddTask] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
@@ -236,8 +237,14 @@ export default function Tasks() {
                     <Accordion.Control>        
 
                         <Group position="apart">
-                          <Box>{task.title}</Box>
+                          <div className="w-full grid grid-cols-12">
+                        <Checkbox checked={checked}  onChange={(event) => setChecked(event.currentTarget.checked)} className="m-2 col-span-1"></Checkbox>
+                        {checked === false ? (
+                        <Box className="m-2 col-span-10">
+                          {task.title}
+                          </Box>) : (<Box className="m-2 col-span-10 line-through color-gray-100">{task.title}</Box>) }
                           <ActionIcon
+                          className="m-2 col-span-1 "
                             variant="filled"
                             size={18}
                             color="red"
@@ -246,12 +253,17 @@ export default function Tasks() {
                             }}
                             >
                             <IconX size={16} />
-                          </ActionIcon>
+                          </ActionIcon></div>
                         </Group>
                       </Accordion.Control>
+                      {checked === false ? (
                     <Accordion.Panel> 
+                    
                       {task.description}
-                    </Accordion.Panel>
+                    </Accordion.Panel> ) : 
+                    (<Accordion.Panel className="line-through color-gray-100">
+                      {task.description}
+                    </Accordion.Panel>)}
                   </Accordion.Item>
                 </Accordion>
               </Accordion.Panel>
