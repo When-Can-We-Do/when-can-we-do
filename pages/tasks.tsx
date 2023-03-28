@@ -5,6 +5,8 @@ import { useState } from "react";
 import Calendar from "./calendar";
 import { DatePicker } from "@mantine/dates";
 import styles from "@/styles/Home.module.css";
+import { Accordion } from '@mantine/core';
+import { AccordionItem } from "@mantine/core/lib/Accordion/AccordionItem/AccordionItem";
 
 
 interface Task {
@@ -54,6 +56,10 @@ export default function Tasks() {
     setShowAddTask(true)
   }
 
+  const delTask = () => {
+
+  }
+
   return (
     <>
       <Head>
@@ -61,9 +67,10 @@ export default function Tasks() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-      <Button onClick={changeView}>{view}</Button>
+      <Button className="absolute left-1 top-1" onClick={changeView}>{view}</Button>
       <div className="grid grid-cols-12 w-full align-text-middle align-middle">
-        <div className="col-span-2 text-center">
+      <div className="col-span-1"></div>
+        <div className="col-span-2 text-left">
           <Button
             variant="gradient"
             gradient={{ from: "#045DE9", to: "#09C6F9", deg: 35 }}
@@ -87,14 +94,14 @@ export default function Tasks() {
             <p className="text-xl align-middle pl-1">Add Task</p>
           </Button>
         </div>
-        <div className="col-span-2"></div>
+        <div className="col-span-1"></div>
         
-        <div className="col-span-2">
+        <div className="col-span-4">
           <p className="text-2xl text-center align-text-middle">
             When Can We Do?
           </p>
         </div>
-        <div className="col-span-2 text-center">
+        <div className="col-span-3 text-right">
           <img
             src="Asset 1.png"
             className="w-[35px] align-middle mr-[10px]"
@@ -103,6 +110,7 @@ export default function Tasks() {
             <Button color={"red"}>Sign out</Button>
           </Link>
         </div>
+        <div className="col-span-1"></div>
         <div className="border-b border-black w-full col-span-12 p-5">
           <hr></hr>
         </div>
@@ -156,7 +164,7 @@ export default function Tasks() {
         view === "Calender" ? (
           <Calendar/>
         ) : (
-          <div className="listBox">
+          <div className="listBox h-full w-full">
             <List/>
           </div>
         )
@@ -176,18 +184,27 @@ export default function Tasks() {
     }, {} as { [date: string]: Task[] });
   
     return (
-      <div>
+      <Accordion className="h-[750px] w-full content-top ">
         {Object.keys(taskGroups).map((date) => (
-          <div key={date}>
-            <h2>{date}</h2>
+          <Accordion.Item value={date} key={date} className=" w-full text-left bg-gray-100 p-1 m-2">
+             <Accordion.Control>{date} </Accordion.Control>
             {taskGroups[date].map((task) => (
-              <div key={task.title}>
-                <span>{task.title}</span>
-              </div>
+              <Accordion.Panel key={task.title}>
+                <Accordion>
+                  <Accordion.Item value = {task.title}>
+                    <Accordion.Control>
+                      {task.title}
+                    </Accordion.Control>
+                    <Accordion.Panel>
+                      // task Description will go here
+                    </Accordion.Panel>
+                  </Accordion.Item>
+                </Accordion>
+              </Accordion.Panel>
             ))}
-          </div>
+          </Accordion.Item>
         ))}
-      </div>
+      </Accordion>
     );
   }
 
