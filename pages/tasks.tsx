@@ -36,8 +36,7 @@ export default function Tasks() {
   const [description, setDescription] = useState("");
   const [view, setView] = useState("Calendar");
   const [showAddTask, setShowAddTask] = useState(false);
-  const [checked, setChecked] = useState(false);
-  const [clicked, setClicked] = useState(false);
+
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
@@ -75,13 +74,7 @@ export default function Tasks() {
       setView("Calendar");
     }
   };
-  const markComplete = () => {
-    if (clicked == true) {
-      setClicked(false);
-    } else {
-      setClicked(true);
-    }
-  }
+
   const viewAddTask = () => {
     setShowAddTask(true);
   };
@@ -224,6 +217,7 @@ export default function Tasks() {
       {} as { [date: string]: Task[] }
     );
     const { hovered, ref } = useHover();
+    const [checked, setChecked] = useState(false);
     
     return (
       <Accordion
@@ -341,10 +335,19 @@ export default function Tasks() {
   }
 
   function EventContent(props: any) {
+    const [clicked, setClicked] = useState(true);
+
     const event = props.data.event;
     const { hovered, ref } = useHover();
     console.log("Calendar event: ");
     console.log(event);
+    const markComplete = () => {
+      if (clicked == true) {
+        setClicked(false);
+      } else {
+        setClicked(true);
+      }
+    };
     return (
       <Tooltip
         multiline
