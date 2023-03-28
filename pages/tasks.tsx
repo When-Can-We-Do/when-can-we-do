@@ -249,7 +249,9 @@ export default function Tasks() {
                           </ActionIcon>
                         </Group>
                       </Accordion.Control>
-                    <Accordion.Panel> {task.description}</Accordion.Panel>
+                    <Accordion.Panel> 
+                      {task.description}
+                    </Accordion.Panel>
                   </Accordion.Item>
                 </Accordion>
               </Accordion.Panel>
