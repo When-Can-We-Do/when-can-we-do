@@ -7,14 +7,13 @@ import {
   Group,
   Stack,
   Textarea,
-  TextInput,
+  TextInput, Accordion, CloseButton,
 } from "@mantine/core";
 import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
 import { DatePicker } from "@mantine/dates";
 import styles from "@/styles/Home.module.css";
-import { Accordion } from "@mantine/core";
 import { AccordionItem } from "@mantine/core/lib/Accordion/AccordionItem/AccordionItem";
 import React from "react";
 import FullCalendar from "@fullcalendar/react"; // must go before plugins
@@ -41,6 +40,7 @@ export default function Tasks() {
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
   };
+
 
   const handleDateChange = (newDate: Date | null) => {
     setDate(newDate);
@@ -209,12 +209,14 @@ export default function Tasks() {
         if (!groups[date]) {
           groups[date] = [];
         }
+        
         groups[date].push(task);
         return groups;
       },
       {} as { [date: string]: Task[] }
     );
-
+    const { hovered, ref } = useHover();
+    
     return (
       <Accordion
         chevronPosition="left"
@@ -231,8 +233,23 @@ export default function Tasks() {
               <Accordion.Panel key={task.title}>
                 <Accordion chevronPosition="left">
                   <Accordion.Item value={task.title}>
-                    <Accordion.Control>{task.title}</Accordion.Control>
-                    <Accordion.Panel>{task.description}</Accordion.Panel>
+                    <Accordion.Control>        
+
+                        <Group position="apart">
+                        <Box>{task.title}</Box>
+                        <ActionIcon
+                        variant="filled"
+                        size={18}
+                        color="red"
+                        onClick={() => {
+                        removeTask(task.title);
+                        }}
+                        >
+                        <IconX size={16} />
+                        </ActionIcon>
+                        </Group>
+                        </Accordion.Control>
+                    <Accordion.Panel> {task.description}</Accordion.Panel>
                   </Accordion.Item>
                 </Accordion>
               </Accordion.Panel>
