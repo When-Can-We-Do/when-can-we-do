@@ -1,14 +1,15 @@
 import Head from "next/head";
-import { TaskProvider } from './taskContext';
+// import { TaskContext, TaskProvider } from './taskContext';
 import SignIn from "./signIn";
 import Tasks from "./tasks";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Button } from "@mantine/core";
 
-export default function Home() {
+export default function Home(this: any) {
   const [signedIn, setSignedIn] = useState(false)
 
   return (
-    <TaskProvider>
+    <>
       <Head>
         <title>When Can We Do</title>
         <link rel="icon" href="/favicon.ico" />
@@ -18,6 +19,6 @@ export default function Home() {
       ) : (
         <SignIn/>
       )}
-    </TaskProvider>
+    </>
   );
 }
