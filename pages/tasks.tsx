@@ -37,6 +37,7 @@ export default function Tasks() {
   const [view, setView] = useState("Calendar");
   const [showAddTask, setShowAddTask] = useState(false);
   const [checked, setChecked] = useState(false);
+  const [clicked, setClicked] = useState(false);
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
@@ -74,7 +75,13 @@ export default function Tasks() {
       setView("Calendar");
     }
   };
-
+  const markComplete = () => {
+    if (clicked == true) {
+      setClicked(false);
+    } else {
+      setClicked(true);
+    }
+  }
   const viewAddTask = () => {
     setShowAddTask(true);
   };
@@ -348,7 +355,8 @@ export default function Tasks() {
         <div ref={ref}>
           {hovered ? (
             <Group position="apart">
-              <Box>{event.title}</Box>
+              
+                {clicked ? (<Box onClick={() => (markComplete())}> {event.title}</Box>) : (<Box onClick={() => (markComplete())} className="line-through">{event.title}</Box>)  }
               <ActionIcon
                 variant="filled"
                 size={18}
@@ -360,8 +368,9 @@ export default function Tasks() {
                 <IconX size={16} />
               </ActionIcon>
             </Group>
-          ) : (
-            event.title
+          ) : (<div>
+            {clicked ? (<Box onClick={() => (markComplete())}> {event.title}</Box>) : (<Box onClick={() => (markComplete())} className="line-through">{event.title}</Box>)  }
+            </div>
           )}
         </div>
       </Tooltip>
