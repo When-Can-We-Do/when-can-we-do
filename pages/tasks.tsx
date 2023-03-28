@@ -236,19 +236,19 @@ export default function Tasks() {
                     <Accordion.Control>        
 
                         <Group position="apart">
-                        <Box>{task.title}</Box>
-                        <ActionIcon
-                        variant="filled"
-                        size={18}
-                        color="red"
-                        onClick={() => {
-                        removeTask(task.title);
-                        }}
-                        >
-                        <IconX size={16} />
-                        </ActionIcon>
+                          <Box>{task.title}</Box>
+                          <ActionIcon
+                            variant="filled"
+                            size={18}
+                            color="red"
+                            onClick={() => {
+                            removeTask(task.title);
+                            }}
+                            >
+                            <IconX size={16} />
+                          </ActionIcon>
                         </Group>
-                        </Accordion.Control>
+                      </Accordion.Control>
                     <Accordion.Panel> {task.description}</Accordion.Panel>
                   </Accordion.Item>
                 </Accordion>
