@@ -22,12 +22,14 @@ interface Task {
   title: string;
   date: Date | null;
   completed: boolean;
+  description: string;
 }
 
 export default function Tasks() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [title, setTitle] = useState("");
   const [date, setDate] = useState<Date | null>(null);
+  const [description, setDescription] = useState("");
   const [view, setView] = useState("Calendar");
   const [showAddTask, setShowAddTask] = useState(false);
 
@@ -37,6 +39,12 @@ export default function Tasks() {
 
   const handleDateChange = (newDate: Date | null) => {
     setDate(newDate);
+  };
+
+  const handleDescriptionChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    setDescription(event.target.value);
   };
 
   const addTask = (task: Task) => {
@@ -149,6 +157,8 @@ export default function Tasks() {
                     <Textarea
                       label="Task Description"
                       placeholder='e.g. "Complete HCI homework assignment and then start networking HW"'
+                      value={description}
+                      onChange={handleDescriptionChange}
                       minRows={4}
                     />
                     <DatePicker
@@ -177,7 +187,7 @@ export default function Tasks() {
             </Box>
           </Box>
         ) : view === "Calendar" ? (
-          <Calendar />
+          <Calendar tasks={tasks} />
         ) : (
           <div className="listBox h-full w-full">
             <List />
@@ -217,9 +227,7 @@ export default function Tasks() {
                 <Accordion chevronPosition="left">
                   <Accordion.Item value={task.title}>
                     <Accordion.Control>{task.title}</Accordion.Control>
-                    <Accordion.Panel>
-                      // task Description will go here
-                    </Accordion.Panel>
+                    <Accordion.Panel>{task.description}</Accordion.Panel>
                   </Accordion.Item>
                 </Accordion>
               </Accordion.Panel>
@@ -236,6 +244,7 @@ export default function Tasks() {
         title: title,
         date: date,
         completed: false,
+        description: description,
       };
 
       addTask(task);
