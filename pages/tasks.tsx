@@ -184,13 +184,13 @@ export default function Tasks() {
     }, {} as { [date: string]: Task[] });
   
     return (
-      <Accordion className="h-[750px] w-full content-top ">
+      <Accordion chevronPosition="left" className="h-[1000px] w-full content-top rounded ">
         {Object.keys(taskGroups).map((date) => (
-          <Accordion.Item value={date} key={date} className=" w-full text-left bg-gray-100 p-1 m-2">
+          <Accordion.Item value={date} key={date} className=" w-full text-left bg-gray-100 rounded mb-2">
              <Accordion.Control>{date} </Accordion.Control>
             {taskGroups[date].map((task) => (
               <Accordion.Panel key={task.title}>
-                <Accordion>
+                <Accordion chevronPosition="left">
                   <Accordion.Item value = {task.title}>
                     <Accordion.Control>
                       {task.title}

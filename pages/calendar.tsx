@@ -7,7 +7,7 @@ export default function Calendar() {
   return (
     <>
       <main className={styles.main}>
-        <div className="h-5/6 w-full">
+        <div className="h-5/6 w-[1200px]">
           <FullCalendar
           plugins={[ dayGridPlugin ]}
           initialView="dayGridMonth"
