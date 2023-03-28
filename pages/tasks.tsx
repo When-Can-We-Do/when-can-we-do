@@ -359,7 +359,7 @@ export default function Tasks() {
           {hovered ? (
             <Group position="apart">
               
-                {clicked ? (<Box onClick={() => (markComplete())} className="underline"> {event.title}</Box>) : (<Box onClick={() => (markComplete())} className="line-through">{event.title}</Box>)  }
+                {clicked ? (<Box onClick={() => (markComplete())} className="underline cursor-pointer"> {event.title}</Box>) : (<Box onClick={() => (markComplete())} className="line-through cursor-pointer">{event.title}</Box>)  }
               <ActionIcon
                 variant="filled"
                 size={18}
@@ -372,7 +372,7 @@ export default function Tasks() {
               </ActionIcon>
             </Group>
           ) : (<div>
-            {clicked ? (<Box onClick={() => (markComplete())}> {event.title}</Box>) : (<Box onClick={() => (markComplete())} className="line-through">{event.title}</Box>)  }
+            {clicked ? (<Box onClick={() => (markComplete())} className="cursor-pointer"> {event.title}</Box>) : (<Box onClick={() => (markComplete())} className="line-through cursor-pointer">{event.title}</Box>)  }
             </div>
           )}
         </div>
