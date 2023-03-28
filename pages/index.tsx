@@ -6,7 +6,7 @@ import { useContext, useState } from "react";
 import { Button } from "@mantine/core";
 
 export default function Home(this: any) {
-  const [signedIn, setSignedIn] = useState(false)
+  const [signedIn, setSignedIn] = useState(false);
 
   return (
     <>
@@ -14,11 +14,7 @@ export default function Home(this: any) {
         <title>When Can We Do</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {signedIn ? (
-        <Tasks/>
-      ) : (
-        <SignIn/>
-      )}
+      {signedIn ? <Tasks /> : <SignIn />}
     </>
   );
 }

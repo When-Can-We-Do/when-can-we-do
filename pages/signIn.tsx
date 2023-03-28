@@ -1,12 +1,6 @@
 import { Inter } from "@next/font/google";
 import Link from "next/link";
-import {
-  Card,
-  Button,
-  Box,
-  Grid,
-  Center,
-} from "@mantine/core";
+import { Card, Button, Box, Grid, Center } from "@mantine/core";
 
 const inter = Inter({ subsets: ["latin"] });
 

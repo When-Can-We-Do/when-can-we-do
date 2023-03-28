@@ -14,14 +14,13 @@ import { DatePicker } from "@mantine/dates";
 import Head from "next/head";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
-import { TaskContext } from './taskContext';
+import { TaskContext } from "./taskContext";
 
 export default function AddTask(props: any) {
-
   const { addTask, tasks } = useContext(TaskContext);
-  const [title, setTitle] = useState("")
-  const [date, setDate] = useState<Date | null>(null)
-  
+  const [title, setTitle] = useState("");
+  const [date, setDate] = useState<Date | null>(null);
+
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
   };
@@ -30,11 +29,9 @@ export default function AddTask(props: any) {
     setDate(newDate);
   };
 
-
   useEffect(() => {
     console.log(tasks);
   }, [tasks]);
-
 
   return (
     <>
@@ -92,7 +89,7 @@ export default function AddTask(props: any) {
                   >
                     Save
                   </Button> */}
-                  <SaveButton/>
+                  <SaveButton />
                 </Group>
               </Grid.Col>
             </Grid>
@@ -105,19 +102,18 @@ export default function AddTask(props: any) {
   function SaveButton() {
     const { addTask, tasks } = useContext(TaskContext);
 
-    const saveTask = () => { 
+    const saveTask = () => {
       const task = {
         title: title,
         date: date,
-        completed: false
+        completed: false,
       };
-  
-      addTask(task)
+
+      addTask(task);
       // console.log(tasks)
-      props.setShowAddTask(false)
-    }
+      props.setShowAddTask(false);
+    };
 
     return <Button onClick={saveTask}>Save</Button>;
   }
-
 }
