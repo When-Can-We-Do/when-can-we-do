@@ -12,11 +12,16 @@ import {
 import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
-import Calendar from "./calendar";
 import { DatePicker } from "@mantine/dates";
 import styles from "@/styles/Home.module.css";
 import { Accordion } from "@mantine/core";
 import { AccordionItem } from "@mantine/core/lib/Accordion/AccordionItem/AccordionItem";
+import React from "react";
+import FullCalendar from "@fullcalendar/react"; // must go before plugins
+import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
+import { ActionIcon, Tooltip } from "@mantine/core";
+import { IconX } from "@tabler/icons";
+import { useHover } from "@mantine/hooks";
 
 interface Task {
   title: string;
@@ -187,7 +192,7 @@ export default function Tasks() {
             </Box>
           </Box>
         ) : view === "Calendar" ? (
-          <Calendar tasks={tasks} />
+          <Calendar />
         ) : (
           <div className="listBox h-full w-full">
             <List />
@@ -252,5 +257,83 @@ export default function Tasks() {
     };
 
     return <Button onClick={saveTask}>Save</Button>;
+  }
+
+  function Calendar() {
+    // const showDeleteButton = (data: any) => {
+    //   console.log(data);
+    // };
+
+    // const hideDeleteButton = (data: any) => {
+    //   console.log(data);
+    // };
+
+    const renderEventContent = (data: any) => {
+      return <EventContent data={data}></EventContent>;
+    };
+
+    return (
+      <>
+        <main className={styles.main}>
+          <div className="h-5/6 w-[1200px]">
+            <FullCalendar
+              plugins={[dayGridPlugin]}
+              initialView="dayGridMonth"
+              height={"750px"}
+              events={tasks.map((task: any, index: number) => {
+                return {
+                  title: task.title,
+                  date: task.date?.toISOString().split("T")[0],
+                  description: task.description,
+                };
+              })}
+              eventContent={renderEventContent}
+            />
+          </div>
+          // below is the image example code for the initial design idea
+          {/* <div className=" col-span-12 content-center items-stretch">
+            <img
+              src="Asset-2.png"
+              className="h-[775px] block align-middle m-auto"
+            ></img>
+          </div> */}
+        </main>
+      </>
+    );
+  }
+
+  function EventContent(props: any) {
+    const event = props.data.event;
+    const { hovered, ref } = useHover();
+    console.log("Calendar event: ");
+    console.log(event);
+    return (
+      <Tooltip
+        multiline
+        withArrow
+        label={event.extendedProps.description}
+        position="right"
+      >
+        <div ref={ref}>
+          {hovered ? (
+            <Group position="apart">
+              <Box>{event.title}</Box>
+              <ActionIcon
+                variant="filled"
+                size={18}
+                color="red"
+                onClick={() => {
+                  removeTask(event.title);
+                }}
+              >
+                <IconX size={16} />
+              </ActionIcon>
+            </Group>
+          ) : (
+            event.title
+          )}
+        </div>
+      </Tooltip>
+    );
   }
 }
