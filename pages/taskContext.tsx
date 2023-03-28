@@ -25,28 +25,29 @@ type TaskProviderProps = {
 };
   
 const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
-const [tasks, setTasks] = useState<Task[]>([]);
+    const [tasks, setTasks] = useState<Task[]>([]);
 
-const addTask = (task: Task) => {
-    setTasks([...tasks, task]);
-    console.log("hello")
-};
+    const addTask = (task: Task) => {
+        setTasks([...tasks, task]);
+        console.log("hello")
+    };
 
-const removeTask = (taskTitle: string) => {
-    setTasks(tasks.filter((task) => task.title !== taskTitle));
-};
+    const removeTask = (taskTitle: string) => {
+        setTasks(tasks.filter((task) => task.title !== taskTitle));
+    };
 
-const updateTask = (taskTitle: string, updatedTask: Task) => {
-    setTasks(
-    tasks.map((task) => (task.title === taskTitle ? updatedTask : task))
+    const updateTask = (taskTitle: string, updatedTask: Task) => {
+        setTasks(
+        tasks.map((task) => (task.title === taskTitle ? updatedTask : task))
+        );
+    };
+
+    return (
+        <TaskContext.Provider value={{ tasks, addTask, removeTask, updateTask }}>
+        {children}
+        </TaskContext.Provider>
     );
 };
-
-return (
-    <TaskContext.Provider value={{ tasks, addTask, removeTask, updateTask }}>
-    {children}
-    </TaskContext.Provider>
-);
-};
   
-export { TaskContext, TaskProvider };
+export { TaskContext, TaskProvider };    export type { Task };
+

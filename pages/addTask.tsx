@@ -1,3 +1,5 @@
+// we can delete this file
+
 import {
   Card,
   Button,
@@ -28,17 +30,6 @@ export default function AddTask(props: any) {
     setDate(newDate);
   };
 
-  const saveTask = () => { 
-    const task = {
-      title: title,
-      date: date,
-      completed: false
-    };
-
-    addTask(task)
-    // console.log(tasks)
-    props.setShowAddTask(false)
-  }
 
   useEffect(() => {
     console.log(tasks);
@@ -92,7 +83,7 @@ export default function AddTask(props: any) {
                   <Link href="/calendar">
                     <Button color="red">Cancel</Button>
                   </Link>
-                  <Button
+                  {/* <Button
                     type="submit"
                     variant="gradient"
                     gradient={{ from: "#045DE9", to: "#09C6F9", deg: 35 }}
@@ -100,7 +91,8 @@ export default function AddTask(props: any) {
                     onClick={saveTask}
                   >
                     Save
-                  </Button>
+                  </Button> */}
+                  <SaveButton/>
                 </Group>
               </Grid.Col>
             </Grid>
@@ -109,4 +101,23 @@ export default function AddTask(props: any) {
       </Box>
     </>
   );
+
+  function SaveButton() {
+    const { addTask, tasks } = useContext(TaskContext);
+
+    const saveTask = () => { 
+      const task = {
+        title: title,
+        date: date,
+        completed: false
+      };
+  
+      addTask(task)
+      // console.log(tasks)
+      props.setShowAddTask(false)
+    }
+
+    return <Button onClick={saveTask}>Save</Button>;
+  }
+
 }

@@ -1,9 +1,12 @@
 import { Text } from "@mantine/core";
-import { useContext } from "react";
-import { TaskContext } from './taskContext';
 
-export default function List() {
-  const { tasks } = useContext(TaskContext);
+interface Task {
+    title: string;
+    date: Date | null;
+    completed: boolean;
+  }
+
+export default function List(tasks: Task[]) {
 
   return (
     <>
