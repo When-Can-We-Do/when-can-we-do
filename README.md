@@ -1,39 +1,36 @@
 # when-can-we-do
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Overview
+When Can We Do? is a task-tracking application that allows users to add tasks/events and interact with them in either a calendar view or a list view. Users are able to view, add, and delete tasks and mark tasks as complete. Users are also able to include descriptions in their tasks to provide more information.
 
-## Getting Started
+## Design
+When Can We Do? is written as a web application that users can access in their browser on a laptop or personal computer.
 
-First, run the development server:
+When Can We Do? is written in TypeScript/JavaScript using the framework [Next.js](https://nextjs.org/). Next.js utilizes [React](https://react.dev/) for its frontend and allows developers to easily write code for both the frontend and backend with its `pages` and `api` system. Developers write code for a view that they want to display on a certain path (such as `https://www.whencanwedo.com/tasks`) as a correspondingly named `.tsx` or `.js` file in the `pages` directory (`pages/tasks.tsx` in the previous example) and they write code for a backend API path they want to access as a file in the `api` directory. 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+The code for the When Can We Do? application is written in files in the pages directory (most notably in the `index.tsx`, `signIn.tsx`, and `tasks.tsx` files &mdash; `_app.tsx` and `_document.tsx` are auto-generated)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+When Can We Do? utilizes two important libraries, [Mantine](https://mantine.dev/) and [FullCalendar](https://fullcalendar.io/docs/react) to produce the frontend. Mantine is used in the app to provide site components like buttons and menus along with organizational components to format the site. FullCalendar is used exclusively to produce the calendar component on the calendar version of the app (i.e., it is unused in the list version).
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Pre-Hosted Site
+When Can We Do? is hosted on https://www.whencanwedo.com/ and can be visited at any time to view and use our application. 
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Requirements
+[Node](https://nodejs.org/en) version 18.12.1+ is required to run the development and production servers.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Installation Instructions
+1. Download this repository somewhere. 
+2. From within the folder where this `README` is located, open a terminal and run `npm install` to install all of the project dependencies.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Development Setup
+Setting up the project for development is simple, just run `npm run dev` to run the development server and then visit [http://localhost:3000](http://localhost:3000) to access the application.
 
-## Learn More
+## Production Setup
+First, generate the production build by running `npm run build`.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Then, run `npm run start` to start the production application.
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+When Can We Do? is currently deployed on the [Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) (the company that maintains Next.js) hosting platform, where it can be visited at https://www.whencanwedo.com/. 
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+If you would like to deploy When Can We Do? for yourself, simply clone the repository and visit [Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme)'s website, and then add the project as a deployment, and follow the link provided by the deployment to access the deployed application.
