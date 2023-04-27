@@ -9,7 +9,7 @@ When Can We Do? is written in TypeScript/JavaScript using the framework [Next.js
 
 The code for the When Can We Do? application is written in files in the pages directory (most notably in the `index.tsx`, `signIn.tsx`, and `tasks.tsx` files &mdash; `_app.tsx` and `_document.tsx` are auto-generated)
 
-When Can We Do? utilizes two important libraries, [Mantine](https://mantine.dev/) and [FullCalendar](https://fullcalendar.io/docs/react) to produce the frontend. Mantine is used in the app to provide site components like buttons and menus along with organizational components to format the site. FullCalendar is used exclusively to produce the calendar component on the calendar version of the app (i.e., it is unused in the list version).
+When Can We Do? utilizes two important libraries, [Mantine](https://mantine.dev/) and [FullCalendar](https://fullcalendar.io/docs/react), to produce the frontend. Mantine is used in the app to provide site components like buttons and menus along with organizational components to format the site. FullCalendar is used exclusively to produce the calendar component on the calendar version of the app (i.e., it is unused in the list version).
 
 ## Pre-Hosted Site
 When Can We Do? is hosted on https://www.whencanwedo.com/ and can be visited at any time to view and use our application. 
